@@ -3,14 +3,14 @@ TASK 1 - Checking if string includes substring
 */
 function isSubstring(string, substring) {
 	const string_length = string.length
-	const substring_lenght = substring.length
+	const substring_length = substring.length
 	for (let i = 0; i < string_length; i++) {
 		if (string[i] == substring[0]) {
 			let check = 0
-			for (let j = 0; j < substring_lenght; j++) {
+			for (let j = 0; j < substring_length; j++) {
 				if (string[i + j] == substring[0 + j]) {
 					check++
-					if (check == substring_lenght) {
+					if (check == substring_length) {
 						return true
 					}
 				}
@@ -20,30 +20,27 @@ function isSubstring(string, substring) {
 	return false
 }
 
-const str1 = "Lorem ipsum"
-const substr1 = "Hello"
-console.log(isSubstring(str1, substr1))
-const str2 = "chce kupic nowa koszulke"
-const substr2 = "pic"
-console.log(isSubstring(str2, substr2))
+const str = "chce kupic nowa koszulke"
+const substr = "pic"
+console.log(isSubstring(str, substr))
 
 // includes() method
 function isSubstring2(string, substring) {
-	if (string.includes(substring)) {
-		return true
-	} else {
-		return false
-	}
+	return string.includes(substring)
 }
+
+const str2 = "Lorem ipsum"
+const substr2 = "m i"
+console.log(isSubstring2(str2, substr2))
 
 // indexOf() method
 function isSubstring3(string, substring) {
-	if (string.indexOf(substring) != -1) {
-		return true
-	} else {
-		return false
-	}
+	return string.indexOf(substring) !== -1
 }
+
+const str3 = "Lorem ipsum"
+const substr3 = "ipsummmmmm"
+console.log(isSubstring3(str3, substr3))
 
 /*
 TASK 2 - return final array with min/max and values between these min/max numbers
