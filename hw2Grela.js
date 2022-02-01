@@ -2,18 +2,15 @@
 TASK 1 - return index of min element (considering absolute value)
 */
 function solution1(arr) {
-	arrElementAbs = []
-	for (let i = 0; i < arr.length; i++) {
-		arrElementAbs.push(Math.abs(arr[i]))
-	}
-
-	let minElement = arrElementAbs[0]
-	for (let i = 0; i < arrElementAbs.length - 1; i++) {
-		if (arrElementAbs[i + 1] < minElement) {
-			minElement = arrElementAbs[i + 1]
+	let indexMinElement = 0
+	let minElement = Math.abs(arr[0])
+	for (let i = 1; i < arr.length; i++) {
+		if (Math.abs(arr[i]) < minElement) {
+			minElement = Math.abs(arr[i])
+			indexMinElement = i
 		}
 	}
-	return arrElementAbs.indexOf(minElement)
+	return indexMinElement
 }
 
 arr1 = [6, 2, 10, 4, 2, -1, 3, 5]
@@ -71,18 +68,13 @@ TASK 4 - return the longest sentence
 */
 function solution4(text) {
 	arrText = text.split(". ")
-	arrCharNumber = []
+	let maxLongestSentence = arrText[0]
 	for (let i = 0; i < arrText.length; i++) {
-		arrCharNumber.push(arrText[i].length)
-	}
-	arrMaxCharNumber = Math.max(...arrCharNumber)
-	arrLongestSentence = []
-	for (let i = 0; i < arrText.length; i++) {
-		if (arrMaxCharNumber == arrText[i].length) {
-			arrLongestSentence.push(arrText[i])
+		if (arrText[i].length > maxLongestSentence.length) {
+			maxLongestSentence = arrText[i]
 		}
 	}
-	return arrLongestSentence
+	return maxLongestSentence
 }
 
 text4 =
@@ -95,22 +87,24 @@ TASK 5 - return the longest word
 */
 
 function solution5(text) {
-	arrText_ = text.replaceAll(/[^a-zA-Z 0-9]+/g, "")
-	arrText = arrText_.split(" ")
-	arrCharNumber = []
+	signs_ = [",", ".", ":", ";", "!", "?"]
+	arrText = text.split(" ")
+	let maxLongestWord = arrText[0]
 	for (let i = 0; i < arrText.length; i++) {
-		arrCharNumber.push(arrText[i].length)
-	}
-	arrMaxCharNumber = Math.max(...arrCharNumber)
-	arrLongestWord = []
-	for (let i = 0; i < arrText.length; i++) {
-		if (arrMaxCharNumber == arrText[i].length) {
-			arrLongestWord.push(arrText[i])
+		for (let j = 0; j < arrText[i].length; j++) {
+			for (let k = 0; k < signs_.length; k++) {
+				if (arrText[i].includes(signs_[k])) {
+					arrText[i] = arrText[i].replace(signs_[k], "")
+				}
+			}
+		}
+		if (arrText[i].length > maxLongestWord.length) {
+			maxLongestWord = arrText[i]
 		}
 	}
-	return arrLongestWord
+	return maxLongestWord
 }
 
 text5 =
-	"Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+	"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
 console.log(solution5(text5))
