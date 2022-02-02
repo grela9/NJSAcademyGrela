@@ -91,11 +91,9 @@ function solution5(text) {
 	arrText = text.split(" ")
 	let maxLongestWord = arrText[0]
 	for (let i = 0; i < arrText.length; i++) {
-		for (let j = 0; j < arrText[i].length; j++) {
-			for (let k = 0; k < signs_.length; k++) {
-				if (arrText[i].includes(signs_[k])) {
-					arrText[i] = arrText[i].replace(signs_[k], "")
-				}
+		for (let j = 0; j < signs_.length; j++) {
+			if (arrText[i].includes(signs_[j])) {
+				arrText[i] = arrText[i].replaceAll(signs_[j], "")
 			}
 		}
 		if (arrText[i].length > maxLongestWord.length) {
