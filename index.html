@@ -5,12 +5,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>NJSAGrela</title>
 </head>
 
 <body>
-    Ninja JS Academy Grela
-    <script src="./hw1Grela.js"></script>
+    <script src="./hw3Grela.js"></script>
+
+    <h1>Residents form</h1>
+    <form action="*">
+        <p>
+            <label for="name">Name:</label> <input type="text" name="name">
+        </p>
+        <p>
+            <label for="name">Lastname:</label> <input type="text" name="lastname">
+        </p>
+        <p>
+            <label for="name">Age:</label> <input type="text" name="age">
+        </p>
+        <p>
+            <label for="name">City:</label> <input type="text" name="city">
+        </p>
+    </form>
+
+    <div>
+        <button onclick="getAddToList()" class=button id="addBttn" type="submit">Add</button><br>
+    </div>
+    <br>
+    <div>
+        <button onclick="getOldestPerson()" class=button id="oldestPersonBttn">Old Person</button><br>
+
+        <div class="info" id="oldestPerson">
+            Click the Old Person button and find out who is the oldest!
+            <div id='additionalField1'></div>
+        </div>
+
+        <br>
+
+        <button onclick="getCracowPeople()" class=button id="cracowPeopleBttn">Cracow People</button>
+
+        <div class="info" id="cracowPeople">
+            Click the Cracow People button and see the list of people living in Cracow!
+            <div id='additionalField2'></div>
+        </div>
+    </div>
 </body>
 
 </html>

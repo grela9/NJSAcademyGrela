@@ -1,0 +1,44 @@
+body {
+	background-color: rgb(19, 63, 64);
+	font-family: courier;
+}
+h1 {
+	color: rgb(224, 224, 241);
+}
+
+p {
+	color: rgb(224, 224, 241);
+}
+
+label {
+	display: table-cell;
+	color: rgb(224, 224, 241);
+}
+input {
+	border-radius: 6px;
+	width: 200px;
+}
+
+#additionalField {
+	margin-top: 50px;
+}
+.button {
+	background-color: rgb(69, 71, 69);
+	color: rgb(224, 224, 241);
+	font-size: 15px;
+	width: 170px;
+	border-radius: 30px;
+	margin: 5px;
+}
+.info {
+	color: rgb(224, 224, 241);
+	font-size: 12px;
+}
+#additionalField1 {
+	min-height: 10px;
+	color: rgb(224, 224, 241);
+
+}
+#additionalField2 {
+	min-height: 15px;
+	color: rgb(224, 224, 241);
