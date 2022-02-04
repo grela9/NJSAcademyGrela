@@ -19,9 +19,6 @@ input {
 	width: 200px;
 }
 
-#additionalField {
-	margin-top: 50px;
-}
 .button {
 	background-color: rgb(69, 71, 69);
 	color: rgb(224, 224, 241);
@@ -34,11 +31,7 @@ input {
 	color: rgb(224, 224, 241);
 	font-size: 12px;
 }
-#additionalField1 {
-	min-height: 10px;
-	color: rgb(224, 224, 241);
-
-}
-#additionalField2 {
+.additionalField {
 	min-height: 15px;
 	color: rgb(224, 224, 241);
+}

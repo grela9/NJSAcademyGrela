@@ -83,7 +83,7 @@ function getCracowPeople() {
 	for (let i = 0; i < listOfPerson.length; i++) {
 		if (listOfPerson[i].city == "Cracow" || listOfPerson[i].city == "Krakow") {
 			cracowPeopleResult.push(
-				listOfPerson[i].name + " " + listOfPerson[i].lastname + " "
+				listOfPerson[i].name + " " + listOfPerson[i].lastname
 			)
 		}
 	}
