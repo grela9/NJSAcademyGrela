@@ -1,0 +1,43 @@
+body {
+	background-color: rgb(59, 54, 59);
+	font-family: courier;
+	color: rgb(118, 255, 209);
+	margin: 0 25px 0 25px;
+}
+h1 {
+	text-align: center;
+}
+label {
+	display: table-cell;
+}
+input {
+	border-radius: 6px;
+	width: 200px;
+}
+p {
+	font-size: 14px;
+}
+.priceList {
+	width: 450px;
+	float: right;
+}
+.button {
+	background-color: rgb(0, 0, 0);
+	color: rgb(242, 232, 232);
+	font-size: 20px;
+	width: 170px;
+	border-radius: 20px;
+	margin: 5px;
+}
+.correctItem {
+	background-color: rgb(10, 65, 10);
+	width: max-content;
+	border-radius: 6px;
+	text-align: center;
+}
+.incorrectItem {
+	background-color: rgb(143, 44, 44);
+	width: max-content;
+	border-radius: 6px;
+	text-align: center;
+}

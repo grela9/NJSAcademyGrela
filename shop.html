@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="shop.css">
+    <title>Shop</title>
+</head>
+
+<body>
+    <h1>Shopping list</h1>
+    <div class="priceList">
+        <p>
+            Click on Show prices button to display pricelist of products. Enjoy your shopping!
+        </p>
+        <button onclick="renderPriceList()" class="button" type="submit" id="priceListBttn">Show prices</button>
+        Currency $
+        <ul id="priceList"></ul>
+    </div>
+
+    <form action="">
+        <label for="">Product name</label>
+        <input type="text" id="productName" name="productName"><br>
+        <br>
+        <label for="">Amount</label>
+        <input type="text" id="productAmount" name="productAmount"><br>
+        <br>
+        <label for="">Budget</label>
+        <input type="text" id="productMaxPrice" name="productMaxPrice">
+        <br>
+        <br>
+        <button class="button" id="addToCartBttn" type="submit">Add to cart</button>
+    </form><br>
+    <ol id="productList">
+    </ol>
+
+    <script src="./shop.js"></script>
+</body>
+
+</html>
