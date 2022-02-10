@@ -17,6 +17,11 @@ input {
 p {
 	font-size: 14px;
 }
+select {
+	border-radius: 6px;
+	width: 208px;
+	height: 21px;
+}
 .priceList {
 	width: 450px;
 	float: right;
@@ -32,12 +37,12 @@ p {
 .correctItem {
 	background-color: rgb(10, 65, 10);
 	width: max-content;
-	border-radius: 6px;
+	border-radius: 3px;
 	text-align: center;
 }
 .incorrectItem {
 	background-color: rgb(143, 44, 44);
 	width: max-content;
-	border-radius: 6px;
+	border-radius: 3px;
 	text-align: center;
 }

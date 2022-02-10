@@ -1,44 +1,56 @@
-function Product(name, price) {
-	return {
-		name,
-		price,
+class Product {
+	constructor(name, price) {
+		this.name = name
+		this.price = price
 	}
 }
 
 const priceProductList = [
-	Product("Milk", 1.99),
-	Product("Bread", 2),
-	Product("Egg", 0.33),
-	Product("Butter", 3),
-	Product("Water", 1.15),
-	Product("Avokado", 2),
-	Product("Cream", 2),
-	Product("Ham", 4),
-	Product("Cheese", 3.59),
-	Product("Juice", 2),
-	Product("Melon", 2),
-	Product("Vodka", 19.99),
-	Product("Lemon", 1),
-	Product("Coconut", 3),
-	Product("Blue cheese", 5),
-	Product("Papaya", 5.22),
-	Product("Garlic", 1),
-	Product("Honey", 8),
-	Product("Blue Label Whisky", 399.99),
-	Product("Beer", 2),
-	Product("Cucumber", 1),
-	Product("Onion", 1),
-	Product("Steak", 39.99),
-	Product("Shrimps", 18.79),
-	Product("Sushi", 39),
+	new Product(""),
+	new Product("Milk", 1.99),
+	new Product("Bread", 2),
+	new Product("Egg", 0.33),
+	new Product("Butter", 3),
+	new Product("Water", 1.15),
+	new Product("Avokado", 2),
+	new Product("Cream", 2),
+	new Product("Ham", 4),
+	new Product("Cheese", 3.59),
+	new Product("Juice", 2),
+	new Product("Melon", 2),
+	new Product("Vodka", 19.99),
+	new Product("Lemon", 1),
+	new Product("Coconut", 3),
+	new Product("Carrot", 1),
+	new Product("Papaya", 5.22),
+	new Product("Garlic", 1),
+	new Product("Honey", 8),
+	new Product("Whisky", 399.99),
+	new Product("Beer", 2),
+	new Product("Cucumber", 1),
+	new Product("Onion", 1),
+	new Product("Steak", 39.99),
+	new Product("Sushi", 39),
 ]
+
+function generateProduct() {
+	const productDropdown = document.getElementById("productName")
+	productDropdown.innerHTML = ""
+	for (let i = 0; i < priceProductList.length; i++) {
+		const productDropdownValue = document.createElement("option")
+		productDropdownValue.innerText = `${priceProductList[i].name}`
+		productDropdown.appendChild(productDropdownValue)
+	}
+}
+
+generateProduct()
 
 const orderList = []
 
 function renderPriceList() {
 	const priceListElement = document.getElementById("priceList")
 	priceListElement.innerHTML = ""
-	for (let i = 0; i < priceProductList.length; i++) {
+	for (let i = 1; i < priceProductList.length; i++) {
 		const productElement = document.createElement("li")
 		productElement.innerText = `${priceProductList[i].name} ${priceProductList[i].price}$`
 		priceListElement.appendChild(productElement)
