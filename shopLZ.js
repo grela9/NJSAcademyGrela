@@ -65,12 +65,30 @@ function renderOrderList() {
 			const productElement = document.createElement("li")
 			const breakElement = document.createElement("br")
 			productElement.innerText = `${orderList[i].name} ${orderList[i].amount}$`
+
+			const deleteButton = document.createElement("button")
+			deleteButton.innerText = "Remove"
+			productElement.appendChild(deleteButton).className = "removeButton"
+			deleteButton.addEventListener("click", () => {
+				orderList.splice(i, 1)
+				renderOrderList()
+			})
+
 			orderListElement.appendChild(productElement).className = "incorrectItem"
 			orderListElement.appendChild(breakElement)
 		} else {
 			const productElement = document.createElement("li")
 			const breakElement = document.createElement("br")
 			productElement.innerText = `${orderList[i].name} ${orderList[i].amount}$`
+
+			const deleteButton = document.createElement("button")
+			deleteButton.innerText = "Remove"
+			productElement.appendChild(deleteButton).className = "removeButton"
+			deleteButton.addEventListener("click", () => {
+				orderList.splice(i, 1)
+				renderOrderList()
+			})
+
 			orderListElement.appendChild(productElement).className = "correctItem"
 			orderListElement.appendChild(breakElement)
 		}
