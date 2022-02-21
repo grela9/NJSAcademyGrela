@@ -1,4 +1,4 @@
-const lsProductList = localStorage.getItem("products")
+let lsProductList = localStorage.getItem("products")
 
 function generateProduct() {
 	const productDropdown = document.getElementById("productName")
@@ -10,8 +10,6 @@ function generateProduct() {
 		productDropdown.appendChild(productDropdownValue)
 	}
 }
-
-generateProduct()
 
 const orderList = []
 
@@ -39,8 +37,7 @@ function renderOrderList() {
 			deleteButton.addEventListener("click", () => {
 				orderList.splice(i, 1)
 				localStorage.removeItem("order")
-				const objStr = JSON.stringify(orderList)
-				localStorage.setItem("order", objStr)
+				localStorage.setItem("order", JSON.stringify(orderList))
 				renderOrderList()
 			})
 
@@ -53,8 +50,7 @@ function renderOrderList() {
 			deleteButton.addEventListener("click", () => {
 				orderList.splice(i, 1)
 				localStorage.removeItem("order")
-				const objStr = JSON.stringify(orderList)
-				localStorage.setItem("order", objStr)
+				localStorage.setItem("order", JSON.stringify(orderList))
 				renderOrderList()
 			})
 
@@ -97,11 +93,11 @@ function addToCart() {
 			return
 		} else {
 			orderList.push(order)
-			const objStr = JSON.stringify(orderList)
-			localStorage.setItem("order", objStr)
+			localStorage.setItem("order", JSON.stringify(orderList))
 			renderOrderList()
 		}
 	})
 }
 
+generateProduct()
 addToCart()

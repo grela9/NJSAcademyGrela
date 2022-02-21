@@ -5,12 +5,7 @@ class Product {
 	}
 }
 
-const productList = [
-	new Product(""),
-	new Product("Milk", 1.99),
-	new Product("Bread", 2),
-	new Product("Egg", 0.33),
-]
+const productList = []
 
 function clearInputs() {
 	const productNameElement = document.getElementById("productName")
@@ -39,23 +34,17 @@ function addToList() {
 			return
 		} else {
 			productList.push(new Product(productName, productPrice))
-			const objStr = JSON.stringify(productList)
-			localStorage.setItem("products", objStr)
+			const productListElement = document.getElementById("productList")
+			productListElement.innerHTML = ""
+			for (let i = 0; i < productList.length; i++) {
+				const productElement = document.createElement("li")
+				productElement.innerText = `${productList[i].name} ${productList[i].price}$`
+				productListElement.appendChild(productElement)
+				localStorage.setItem("products", JSON.stringify(productList))
+			}
 			clearInputs()
 		}
 	})
-}
-
-function showProductList() {
-	const productListElement = document.getElementById("productList")
-	productListElement.innerHTML = ""
-	const objStr = JSON.stringify(productList)
-	for (let i = 1; i < productList.length; i++) {
-		const productElement = document.createElement("li")
-		productElement.innerText = `${productList[i].name} ${productList[i].price}$`
-		productListElement.appendChild(productElement)
-		localStorage.setItem("products", objStr)
-	}
 }
 
 addToList()
