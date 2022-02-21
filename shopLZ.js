@@ -1,17 +1,26 @@
-let lsProductList = localStorage.getItem("products")
+let productsStr = localStorage.getItem("products")
+let orderStr = localStorage.getItem("order")
+
+if (productsStr == null) {
+	productsStr = "[]"
+}
+
+if (orderStr == null) {
+	orderStr = "[]"
+}
+
+const orderList = JSON.parse(orderStr)
 
 function generateProduct() {
 	const productDropdown = document.getElementById("productName")
 	productDropdown.innerHTML = ""
-	objProducts = JSON.parse(lsProductList)
+	objProducts = JSON.parse(productsStr)
 	for (let i = 0; i < objProducts.length; i++) {
 		const productDropdownValue = document.createElement("option")
 		productDropdownValue.innerText = objProducts[i].name
 		productDropdown.appendChild(productDropdownValue)
 	}
 }
-
-const orderList = []
 
 function clearInputs() {
 	const productNameElement = document.getElementById("productName")
@@ -101,3 +110,4 @@ function addToCart() {
 
 generateProduct()
 addToCart()
+renderOrderList()

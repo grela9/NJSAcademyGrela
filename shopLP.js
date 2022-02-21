@@ -5,13 +5,30 @@ class Product {
 	}
 }
 
-const productList = []
+let productsStr = localStorage.getItem("products")
+
+if (productsStr == null) {
+	productsStr = "[]"
+}
+
+const productList = JSON.parse(productsStr)
 
 function clearInputs() {
 	const productNameElement = document.getElementById("productName")
 	const productPriceElement = document.getElementById("productPrice")
 	productNameElement.value = ""
 	productPriceElement.value = ""
+}
+
+function renderList() {
+	const productListElement = document.getElementById("productList")
+	productListElement.innerHTML = ""
+	for (let i = 0; i < productList.length; i++) {
+		const productElement = document.createElement("li")
+		productElement.innerText = `${productList[i].name} ${productList[i].price}$`
+		productListElement.appendChild(productElement)
+		localStorage.setItem("products", JSON.stringify(productList))
+	}
 }
 
 function addToList() {
@@ -34,17 +51,11 @@ function addToList() {
 			return
 		} else {
 			productList.push(new Product(productName, productPrice))
-			const productListElement = document.getElementById("productList")
-			productListElement.innerHTML = ""
-			for (let i = 0; i < productList.length; i++) {
-				const productElement = document.createElement("li")
-				productElement.innerText = `${productList[i].name} ${productList[i].price}$`
-				productListElement.appendChild(productElement)
-				localStorage.setItem("products", JSON.stringify(productList))
-			}
+			renderList()
 			clearInputs()
 		}
 	})
 }
 
 addToList()
+renderList()
