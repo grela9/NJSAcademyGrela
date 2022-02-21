@@ -27,7 +27,6 @@ function renderList() {
 		const productElement = document.createElement("li")
 		productElement.innerText = `${productList[i].name} ${productList[i].price}$`
 		productListElement.appendChild(productElement)
-		localStorage.setItem("products", JSON.stringify(productList))
 	}
 }
 
@@ -51,6 +50,7 @@ function addToList() {
 			return
 		} else {
 			productList.push(new Product(productName, productPrice))
+			localStorage.setItem("products", JSON.stringify(productList))
 			renderList()
 			clearInputs()
 		}
