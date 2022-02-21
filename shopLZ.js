@@ -1,44 +1,12 @@
-class Product {
-	constructor(name, price) {
-		this.name = name
-		this.price = price
-	}
-}
-
-const priceProductList = [
-	new Product(""),
-	new Product("Milk", 1.99),
-	new Product("Bread", 2),
-	new Product("Egg", 0.33),
-	new Product("Butter", 3),
-	new Product("Water", 1.15),
-	new Product("Avokado", 2),
-	new Product("Cream", 2),
-	new Product("Ham", 4),
-	new Product("Cheese", 3.59),
-	new Product("Juice", 2),
-	new Product("Melon", 2),
-	new Product("Vodka", 19.99),
-	new Product("Lemon", 1),
-	new Product("Coconut", 3),
-	new Product("Carrot", 1),
-	new Product("Papaya", 5.22),
-	new Product("Garlic", 1),
-	new Product("Honey", 8),
-	new Product("Whisky", 399.99),
-	new Product("Beer", 2),
-	new Product("Cucumber", 1),
-	new Product("Onion", 1),
-	new Product("Steak", 39.99),
-	new Product("Sushi", 39),
-]
+const lsProductList = localStorage.getItem("products")
 
 function generateProduct() {
 	const productDropdown = document.getElementById("productName")
 	productDropdown.innerHTML = ""
-	for (let i = 0; i < priceProductList.length; i++) {
+	objProducts = JSON.parse(lsProductList)
+	for (let i = 0; i < objProducts.length; i++) {
 		const productDropdownValue = document.createElement("option")
-		productDropdownValue.innerText = `${priceProductList[i].name}`
+		productDropdownValue.innerText = objProducts[i].name
 		productDropdown.appendChild(productDropdownValue)
 	}
 }
@@ -47,57 +15,53 @@ generateProduct()
 
 const orderList = []
 
-function renderPriceList() {
-	const priceListElement = document.getElementById("priceList")
-	priceListElement.innerHTML = ""
-	for (let i = 1; i < priceProductList.length; i++) {
-		const productElement = document.createElement("li")
-		productElement.innerText = `${priceProductList[i].name} ${priceProductList[i].price}$`
-		priceListElement.appendChild(productElement)
-	}
+function clearInputs() {
+	const productNameElement = document.getElementById("productName")
+	const productAmountElement = document.getElementById("productAmount")
+	const productMaxPriceElement = document.getElementById("productMaxPrice")
+	productNameElement.value = ""
+	productAmountElement.value = ""
+	productMaxPriceElement.value = ""
 }
 
 function renderOrderList() {
 	const orderListElement = document.getElementById("productList")
 	orderListElement.innerHTML = ""
 	for (let i = 0; i < orderList.length; i++) {
-		if (orderList[i].amount > orderList[i].budget) {
-			const productElement = document.createElement("li")
-			const breakElement = document.createElement("br")
-			productElement.innerText = `${orderList[i].name} ${orderList[i].amount}$`
+		const productElement = document.createElement("li")
+		const breakElement = document.createElement("br")
+		const deleteButton = document.createElement("button")
 
-			const deleteButton = document.createElement("button")
-			deleteButton.innerText = "Remove"
+		if (orderList[i].amount > orderList[i].budget) {
+			productElement.innerText = `${orderList[i].name} ${orderList[i].amount}$`
+			deleteButton.innerText = "x"
 			productElement.appendChild(deleteButton).className = "removeButton"
 			deleteButton.addEventListener("click", () => {
 				orderList.splice(i, 1)
+				localStorage.removeItem("order")
+				const objStr = JSON.stringify(orderList)
+				localStorage.setItem("order", objStr)
 				renderOrderList()
 			})
 
 			orderListElement.appendChild(productElement).className = "incorrectItem"
 			orderListElement.appendChild(breakElement)
 		} else {
-			const productElement = document.createElement("li")
-			const breakElement = document.createElement("br")
 			productElement.innerText = `${orderList[i].name} ${orderList[i].amount}$`
-
-			const deleteButton = document.createElement("button")
-			deleteButton.innerText = "Remove"
+			deleteButton.innerText = "x"
 			productElement.appendChild(deleteButton).className = "removeButton"
 			deleteButton.addEventListener("click", () => {
 				orderList.splice(i, 1)
+				localStorage.removeItem("order")
+				const objStr = JSON.stringify(orderList)
+				localStorage.setItem("order", objStr)
 				renderOrderList()
 			})
 
 			orderListElement.appendChild(productElement).className = "correctItem"
 			orderListElement.appendChild(breakElement)
 		}
-		const productNameElement = document.getElementById("productName")
-		const productAmountElement = document.getElementById("productAmount")
-		const productMaxPriceElement = document.getElementById("productMaxPrice")
-		productNameElement.value = ""
-		productAmountElement.value = ""
-		productMaxPriceElement.value = ""
+		clearInputs()
 	}
 }
 
@@ -121,15 +85,20 @@ function addToCart() {
 
 		if (!productName) {
 			alert("Provide product name!")
+			clearInputs()
 			return
 		} else if (!productAmount || productAmount <= 0) {
 			alert("Amount can not be empty, must be a number and bigger than 0!")
+			clearInputs()
 			return
 		} else if (!productMaxPrice || productMaxPrice <= 0) {
 			alert("Budget can not be empty, must be a number and bigger than 0!")
+			clearInputs()
 			return
 		} else {
 			orderList.push(order)
+			const objStr = JSON.stringify(orderList)
+			localStorage.setItem("order", objStr)
 			renderOrderList()
 		}
 	})

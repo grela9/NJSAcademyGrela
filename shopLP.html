@@ -11,14 +11,22 @@
 
 <body>
     <h1>List of products</h1>
+    <div class="productList">
+        <p>
+            Click 'Show' button to display current available products. In case of any new added product - click on this
+            button again to refresh the list.
+        </p>
+        <button onclick="showProductList()" class="button">Show</button>
+        <ul id="productList"></ul>
+    </div>
     <form action="">
         <label for="">Product name</label>
         <input type="text" id="productName" name="productName"><br>
         <br>
         <label for="">Price $</label>
-        <input type="text" id="productAmount" name="productAmount"><br>
+        <input type="text" id="productPrice" name="productPrice"><br>
         <br>
-        <button class="button" id="addToCartBttn" type="submit">Add to list</button>
+        <button class="button" id="addToProductListBttn" type="submit">Add</button>
     </form>
 
     <script src="./shopLP.js"></script>
