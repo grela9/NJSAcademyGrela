@@ -20,6 +20,7 @@ exports.config = {
     // then the current working directory is where your `package.json` resides, so `wdio`
     // will be called from there.
     //
+	
     specs: [
         './test/specs/**/*.js'
     ],
@@ -63,6 +64,7 @@ exports.config = {
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
     }],
+	
     //
     // ===================
     // Test Configurations
@@ -132,7 +134,7 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec',['allure', {outputDir: 'allure-results'}]],
+    //reporters: ['spec',['allure', {outputDir: 'allure-results'}]],
 
 
     
